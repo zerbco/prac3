@@ -2,12 +2,18 @@
 #include "Person.h"
 using namespace std;
 
-extern PersonList createPersonList(int n);
-PersonList shallowCopyPersonList(PersonList pl);
+extern PersonList shallowCopyPersonList(PersonList pl);
 
 int main() {
     int size = 3;
-    PersonList original = createPersonList(size);
+    PersonList original;
+    original.numPeople = size;
+    original.people = new Person[size];
+        
+    for (int i = 0; i < size; i++) {
+        original.people[i].name = "Jane Doe";
+        original.people[i].age = 1;
+    }
 
     for (int i = 0; i < size; i++) {
         cout << "Person " << i << ": " << original.people[i].name << "Age: " << original.people[i].age << endl;
